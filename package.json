@@ -1,0 +1,26 @@
+{
+  "name": "mongodb-largest-documents",
+  "version": "1.0.0",
+  "description": "A simple Node.js script that finds the top X largest documents in a given MongoDB collection.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eladnava/mongodb-largest-documents.git"
+  },
+  "author": "Elad Nava",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eladnava/mongodb-largest-documents/issues"
+  },
+  "homepage": "https://github.com/eladnava/mongodb-largest-documents#readme",
+  "dependencies": {
+    "bson": "^0.4.23",
+    "co": "^4.6.0",
+    "co-monk": "^1.0.0",
+    "mongoose": "^4.4.15",
+    "monk": "^1.0.1"
+  }
+}
