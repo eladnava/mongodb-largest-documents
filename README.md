@@ -3,6 +3,10 @@
 
 A simple Node.js script that finds the top X largest documents in a given MongoDB collection.
 
+## Preview
+
+![Preview](https://raw.github.com/eladnava/mongodb-largest-documents/master/assets/preview.png) 
+
 ## Requirements
 
 * A MongoDB database
