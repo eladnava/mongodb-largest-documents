@@ -3,6 +3,10 @@
 
 A simple Node.js script that finds the top X largest documents in a given MongoDB collection.
 
+* Scalable - can work with any collection size
+* Fast - utilizes [range-based pagination](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor-skip) for fast table scanning
+* Easy - simply provide the MongoDB connection string and collection name
+
 ## Preview
 
 ![Preview](https://raw.github.com/eladnava/mongodb-largest-documents/master/assets/preview.png) 
