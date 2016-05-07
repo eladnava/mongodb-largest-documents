@@ -1,6 +1,6 @@
 {
   "name": "mongodb-largest-documents",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple Node.js script that finds the top X largest documents in a given MongoDB collection.",
   "main": "index.js",
   "scripts": {
