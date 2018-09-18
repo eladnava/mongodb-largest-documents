@@ -11,9 +11,9 @@ const config = {
 };
 
 function formatOutput (documents) {
-  return documents.map(doc => `- ObjectId("${doc.id}"): ${doc.pretty}`).join('\n');
+  return documents.map(doc => `- ObjectId("${doc.id}"): ${doc.prettySize}`).join('\n');
 }
 
 mongodbLargestDocs(config)
-  .then(docs => console.log('Largest documents:\n' + formatOutput(docs)))
+  .then(docs => console.log('[System]', 'Largest documents:\n' + formatOutput(docs)))
   .catch(err => console.error(err));

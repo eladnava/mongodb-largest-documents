@@ -5,16 +5,16 @@ A simple Node.js script that finds the top X largest documents in a given MongoD
 
 * Scalable - can work with any collection size
 * Fast - utilizes [range-based pagination](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor-skip) for fast table scanning
-* Easy - simply provide the MongoDB connection string and collection name
+* Easy - simply provide the MongoDB connection string and the db and collection names
 
 ## Preview
 
-![Preview](https://raw.github.com/eladnava/mongodb-largest-documents/master/assets/preview.png) 
+![Preview](https://raw.github.com/eladnava/mongodb-largest-documents/master/assets/preview.png)
 
 ## Requirements
 
 * A MongoDB database
-* Node.js v4.x+ for ES6 generators support
+* Node.js v8.x+ for async/await
 
 ## Usage
 
@@ -27,30 +27,25 @@ npm install mongodb-largest-documents --save
 Then, use the following code to find the top 100 largest documents in a given collection, modifying the `config` variable accordingly:
 
 ```js
-var mongodbLargestDocuments = require('mongodb-largest-documents');
+const mongodbLargestDocuments = require('mongodb-largest-documents');
 
-// Configure task here
-var config = {
-    // MongoDB connection string
-    db: 'localhost/test',
-    // Name of collection to inspect
-    collectionName: 'users',
-    // Process X items every iteration
-    batchSize: 100,
-    // Limit output to X largest documents
-    outputTopXLargest: 100
+const config = {
+    url: 'mongodb://localhost:27017', // MongoDB connection string
+    dbName: 'test',                   // MongoDB Database name
+    collectionName: 'users',          // MongoDB Collection name
+    batchSize: 100,                   // Process X items every iteration
+    outputTopXLargest: 100,           // Limit output to Y largest documents
+    skip: 0,                          // Skip the firsts Z documents
 };
 
-// Run the module
-mongodbLargestDocuments(config, function (err, result) {
-    // Handle errors
-    if (err) {
-        return console.log(err);
-    }
-    
-    // Print largest documents to console
-    console.log('Largest documents:', result);
-});
+function formatOutput (documents) {
+  return documents.map(doc => `- ObjectId("${doc.id}"): ${doc.prettySize} = ${doc.size} Bytes`).join('\n');
+}
+
+mongodbLargestDocuments(config)
+  .then(docs => console.log('Largest documents:\n' + formatOutput(docs)))
+  .catch(err => console.error(err));
+
 ```
 
 Run the script and watch the console for progress - it will invoke your callback when it traverses the entire collection.
