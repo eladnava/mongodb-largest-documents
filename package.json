@@ -17,10 +17,7 @@
   },
   "homepage": "https://github.com/eladnava/mongodb-largest-documents#readme",
   "dependencies": {
-    "bson": "^0.4.23",
-    "co": "^4.6.0",
-    "co-monk": "^1.0.0",
-    "mongoose": "^4.4.15",
-    "monk": "^1.0.1"
+    "bson-ext": "^2.0.1",
+    "mongodb": "^3.1.6"
   }
 }
